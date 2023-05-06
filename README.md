@@ -38,7 +38,7 @@
 		```
 	* You will need two positional arguments for `post`. The first is the JSON data string. The second is the target resource.
 		```
-		post '{"name": "John Drake", "rank": "Buccaneer", "ship": "Blue Night"}' pirate
+		post '{"name": "John Drake", "rank": "Buccaneer", "ship": "Blue Night"}' pirates
 		```
 	* You will need two positional arguments for `put`. The first is the JSON data string. The second is the path to the resource you want to modify.
 		```sh
