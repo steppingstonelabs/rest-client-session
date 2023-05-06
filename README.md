@@ -6,7 +6,15 @@
 * Temporary aliases.
 * Shell initialization and permanent aliases for adding and committing with `git`.
 * Bash functions and positional arguments to add, commit and push with a single command. A quick commit.
-* Environment variables.
+* Variables vs environment variables.
+    ```sh
+    greeting="Welcome to your terminal"
+    me=$(whoami)
+    day=$(date +%A)
+    echo "$greeting, $me. Today is $day."
+    echo ""
+    cal
+    ```
 
 ### Group Project - Terminal REST Client
 
@@ -30,7 +38,7 @@
 		```
 	* You will need two positional arguments for `post`. The first is the JSON data string. The second is the target resource.
 		```
-		post '{"name": "John Drake", "rank": "Buccaneer", "ship": "Blue Night"}' pirates
+		post '{"name": "John Drake", "rank": "Buccaneer", "ship": "Blue Night"}' pirate
 		```
 	* You will need two positional arguments for `put`. The first is the JSON data string. The second is the path to the resource you want to modify.
 		```sh
@@ -70,67 +78,67 @@ Expand the details below to get your data.
       "id": 1,
       "name": "Blackbeard",
       "rank": "Captain",
-      "ship": "Queen Anne's Revenge",
+      "ship": "Queen Anne's Revenge"
     },
     {
       "id": 2,
       "name": "Anne Bonny",
       "rank": "Pirate",
-      "ship": "Ranger",
+      "ship": "Ranger"
     },
     {
       "id": 3,
       "name": "Calico Jack",
       "rank": "Captain",
-      "ship": "The Revenge",
+      "ship": "The Revenge"
     },
     {
       "id": 4,
       "name": "Captain Kidd",
       "rank": "Captain",
-      "ship": "Adventure Galley",
+      "ship": "Adventure Galley"
     },
     {
       "id": 5,
       "name": "Charles Vane",
       "rank": "Captain",
-      "ship": "Ranger",
+      "ship": "Ranger"
     },
     {
       "id": 6,
       "name": "Edward England",
       "rank": "Captain",
-      "ship": "Pearl",
+      "ship": "Pearl"
     },
     {
       "id": 7,
       "name": "Edward Teach",
       "rank": "Captain",
-      "ship": "Queen Anne's Revenge",
+      "ship": "Queen Anne's Revenge"
     },
     {
       "id": 8,
       "name": "Henry Avery",
       "rank": "Captain",
-      "ship": "Fancy",
+      "ship": "Fancy"
     },
     {
       "id": 9,
       "name": "Henry Morgan",
       "rank": "Captain",
-      "ship": "Satisfaction",
+      "ship": "Satisfaction"
     },
     {
       "id": 10,
       "name": "Jack Rackham",
       "rank": "Captain",
-      "ship": "The Revenge",
+      "ship": "The Revenge"
     },
     {
       "id": 50,
       "name": "Mary Read",
       "rank": "Pirate",
-      "ship": "Ranger",
+      "ship": "Ranger"
     }
   ],
   "stories": [
