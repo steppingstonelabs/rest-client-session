@@ -10,10 +10,10 @@
 
 ### Group Project - Terminal REST Client
 
-1. Install `json-server`
+1. Install a simple API server with `npm i -g json-server`
 2. Create a new directory named `rest-server` wherever you like.
 3. In that directory, create a file named `database.json`
-4. Copy the JSON provided into that file.
+4. Copy the JSON provided below into that file.
 5. Start your simple API with `json-server database.json -p 8080`.
 6. Create a bash function named `setapi` that sets the value of the `REMOTE_API` environment variable to the first positional argument, which will be the root URL to your local API.
 	```sh
@@ -37,6 +37,14 @@
 		put '{ "name": "John Drake", "rank": "Buccaneer", "ship": "Blue Midnight" }' pirates/51
 		```
 	* The URL for all methods will start with the value of the `REMOTE_API` environment variable _(e.g. `$REMOTE_API/$1`)_
+
+### Changing Your Target API
+
+1. Use `setapi` to change your target to `http://giffyapi.nss.team`.
+2. Request the `users` resource.
+3. Add yourself as a user with a POST request.
+4. Change your password with a PUT request.
+5. Delete your user with a DELETE request.
 
 ### Explorer Challenge
 
