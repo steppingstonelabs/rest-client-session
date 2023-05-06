@@ -1,6 +1,13 @@
-## Workshop One - Shell Aliases and Functions
+# Workshop One - Shell Aliases and Functions
 
-### Overview
+## Prerequsites
+
+1. Access to an Ubuntu shell
+2. Have node and npm installed
+3. Have admin access for your user account
+4. Have JSON Server installed with `npm i -g json-server`
+
+## Overview
 
 * What is a shell environment? Is it the terminal?
 * Temporary aliases.
@@ -18,16 +25,15 @@
 
 ### Group Project - Terminal REST Client
 
-1. Install a simple API server with `npm i -g json-server`
-2. Create a new directory named `rest-server` wherever you like.
-3. In that directory, create a file named `database.json`
-4. Copy the JSON provided below into that file.
-5. Start your simple API with `json-server database.json -p 8080`.
-6. Create a bash function named `setapi` that sets the value of the `REMOTE_API` environment variable to the first positional argument, which will be the root URL to your local API.
+1. Create a new directory named `rest-server` wherever you like.
+1. In that directory, create a file named `database.json`
+1. Copy the JSON provided below into that file.
+1. Start your simple API with `json-server database.json -p 8080`.
+1. Create a bash function named `setapi` that sets the value of the `REMOTE_API` environment variable to the first positional argument, which will be the root URL to your local API.
 	```sh
 	setapi http://localhost:8080
 	```
-7. Create 4 bash functions in your shell initialization file named `get`, `post`, `put`, and `delete` that uses `curl` in silent mode to perform those 4 actions with your local API.
+1. Create 4 bash functions in your shell initialization file named `get`, `post`, `put`, and `delete` that uses `curl` in silent mode to perform those 4 actions with your local API.
 	* You will need one positional argument for `get` that is the resource needed.
 		```sh
 		get pirates
@@ -49,10 +55,10 @@
 ### Changing Your Target API
 
 1. Use `setapi` to change your target to `http://giffyapi.nss.team`.
-2. Request the `users` resource.
-3. Add yourself as a user with a POST request.
-4. Change your password with a PUT request.
-5. Delete your user with a DELETE request.
+1. Request the `users` resource.
+1. Add yourself as a user with a POST request.
+1. Change your password with a PUT request.
+1. Delete your user with a DELETE request.
 
 ### Explorer Challenge
 
