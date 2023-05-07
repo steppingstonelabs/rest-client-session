@@ -2,10 +2,15 @@
 
 ## Prerequsites
 
-1. Access to an Ubuntu shell
-2. Have node and npm installed
-3. Have admin access for your user account
+1. Basic knowledge of HTTP requests and what the methods GET, POST, PUT, and DELETE do.
+1. Access to an *nix shell
+    * Mac OS
+    * WSL installed on Windows
+    * Linux
+2. Your account has admin access to run `sudo`
+3. Have node and npm installed. We recommend that you use [Node Version Manager](https://github.com/nvm-sh/nvm#installing-and-updating) (nvm) to do this
 4. Have JSON Server installed with `npm i -g json-server`
+5. Know what your default shell environment is by running `echo $SHELL` in your terminal.
 
 ## Overview
 
@@ -23,34 +28,87 @@
     cal
     ```
 
-### Group Project - Terminal REST Client
+## Group Project - Postman in the Terminal
+
+Most people are familiar with Postman, or a related application, that allows developers to make HTTP requests to a remote API for testing. Sometimes, though, it would be nice to make a quick GET request to an API without waiting for Postman to start up.
+
+
+### Getting Started
+
+You are going to work in a small team to collaboratively write some bash functions in your shell initialization script _(.bashrc or .zshrc depending on your default shell)_. It is recommended that each teammate take turns sharing their screen and writing some of the functions.
+
+Each teammate should follow along as closely as possible while another teammate is sharing their screen. That way, when it is your turn, you have some of the same code already written.
+
+Help each other.
 
 1. Create a new directory named `rest-server` wherever you like.
 1. In that directory, create a file named `database.json`
 1. Copy the JSON provided below into that file.
 1. Start your simple API with `json-server database.json -p 8080`.
-1. Create a bash function named `setapi` that sets the value of the `REMOTE_API` environment variable to the first positional argument, which will be the root URL to your local API.
-	```sh
-	setapi http://localhost:8080
-	```
-1. Create 4 bash functions in your shell initialization file named `get`, `post`, `put`, and `delete` that uses `curl` in silent mode to perform those 4 actions with your local API.
-	* You will need one positional argument for `get` that is the resource needed.
-		```sh
-		get pirates
-		```
-	* You will need one positional argument for `delete` that is the path to the resource you want to delete.
-		```sh
-		delete pirates/1
-		```
-	* You will need two positional arguments for `post`. The first is the JSON data string. The second is the target resource.
-		```
-		post '{"name": "John Drake", "rank": "Buccaneer", "ship": "Blue Night"}' pirates
-		```
-	* You will need two positional arguments for `put`. The first is the JSON data string. The second is the path to the resource you want to modify.
-		```sh
-		put '{ "name": "John Drake", "rank": "Buccaneer", "ship": "Blue Midnight" }' pirates/51
-		```
-	* The URL for all methods will start with the value of the `REMOTE_API` environment variable _(e.g. `$REMOTE_API/$1`)_
+
+### Setting Remote API Environment Variable
+
+Create a bash function named `setapi` that sets the value of the `REMOTE_API` environment variable to the first positional argument (`$1`), which will be the root URL to your local API.
+
+If you set it up correctly, the following commands...
+
+```sh
+setapi http://localhost:8080
+echo $REMOTE_API
+```
+
+Will echo `http://localhost:8080` in your terminal.
+
+### Function to GET Resources
+
+> The request URL for all **curl** commands will start with the value of the `REMOTE_API` environment variable _(e.g. `$REMOTE_API/$1`)_. Meaning, you won't hard-code `http://localhost:8080` anywhere in the four functions you are about to create.
+
+Create a function in your shell initialization file named `get`. In this function, you will use the bash command **curl** to make an HTTP GET request to your local pirate API. Since we did not cover `curl` in the overview, it's your team's responsibility to research it. I recommend using ChatGPT or visit the [Using Curl to make REST API requests](https://linuxize.com/post/curl-rest-api/) article.
+
+You should be able to enter the following command in your shell and get all of the pirates JSON as a response.
+
+```sh
+get pirates
+```
+
+### Function to DELETE a Resource
+
+Create a function in your shell initialization file named `delete`. In this function, you will use the bash command **curl** to make an HTTP DELETE request to your local pirate API.
+
+You should be able to enter the following commands in your shell and verify that pirate 1 is no longer in the API.
+
+```sh
+delete pirates/1
+get pirates
+```
+
+### Function to POST a Resource
+
+Create a function in your shell initialization file named `post`. In this function, you will use the bash command **curl** to make an HTTP POST request to your local pirate API.
+
+
+You will using two positional arguments for the `post` function instead of one. The  JSON data string becomes `$1`, and "pirates" becomes `$2`.
+
+You should be able to enter the following commands in your shell and verify that a new pirate is added to the array of pirate objects.
+
+```sh
+post '{"name": "John Drake", "rank": "Buccaneer", "ship": "Blue Night"}' pirates
+get pirates
+```
+
+### Function to PUT a Resource
+
+Create a function in your shell initialization file named `put`. In this function, you will use the bash command **curl** to make an HTTP POST request to your local pirate API.
+
+
+You will using two positional arguments for the `post` function instead of one. The  JSON data string becomes `$1`, and the path to the resource your are modifying becomes `$2`.
+
+You should be able to enter the following commands in your shell and verify that pirate 51 has been updated in the API. If you don't have a pirate 51, change the primary key to one that does exist.
+
+```sh
+put '{ "name": "John Drake", "rank": "Buccaneer", "ship": "Blue Midnight" }' pirates/51
+get pirates/51
+```
 
 ### Changing Your Target API
 
