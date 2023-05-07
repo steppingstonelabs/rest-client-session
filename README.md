@@ -10,7 +10,7 @@
 2. Your account has admin access to run `sudo`
 3. Have node and npm installed. We recommend that you use [Node Version Manager](https://github.com/nvm-sh/nvm#installing-and-updating) (nvm) to do this
 4. Have JSON Server installed with `npm i -g json-server`
-5. Know what your default shell environment is by running `echo $SHELL` in your terminal.
+5. Know what your default shell environment is by running `echo $SHELL` in your terminal. It will likely be bash (/bin/sh) or zsh (/bin/zsh).
 
 ## Overview
 
